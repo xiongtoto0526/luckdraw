@@ -1,0 +1,70 @@
+.luckydraw {
+  overflow: auto;
+  font-family: 'Microsoft Yahei';
+}
+
+.draw-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url(img/bg.jpg);
+  background-size: contain;
+  background-origin: border-box;
+  background-repeat: round;
+}
+
+.draw-ready {
+  width: 30%;
+  margin: 20% auto 50px;
+  display: block;
+}
+
+.draw-text {
+  font-family: 'Microsoft Yahei';
+  background: url('img/title.png');
+  background-repeat: round;
+  background-position: 0 0;
+  background-size: contain;
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-align: center;
+}
+
+.draw-text-round {
+  font-weight: bold;
+  font-size: 50px;
+}
+.draw-text-title {
+  font-weight: bold;
+  font-size: 110px;
+  margin-top: 60px;
+}
+.draw-text-info {
+  font-size: 60px;
+  margin: 20px 0 60px 0;
+}
+.draw-text-ppl {
+  font-size: 20px;
+  color: #DDD;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.form-inline .form-control.form-control-sm.config-add-input {
+  width: 90px;
+  margin-right: 10px;
+}
+.oper-container {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.oper-container .row {
+  margin-bottom: 5px;
+}
+
+.ppl-card {
+  padding: 10px;
+}

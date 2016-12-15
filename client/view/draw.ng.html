@@ -1,0 +1,20 @@
+<div class="draw-bg">
+  <div ng-if="vm.dbStatus[0].page == 'ready'">
+    <img src="img/button.png" class="draw-ready"></img>
+    <h1 class="draw-text draw-text-round">{{vm.nextDraw.class}}</h1>
+  </div>
+  <div ng-if="vm.dbStatus[0].page == 'running' || vm.dbStatus[0].page == 'result'">
+    <h1 class="draw-text draw-text-title">中奖名单</h1>
+    <h1 class="draw-text draw-text-info">({{vm.getRoundDisp()}})</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 draw-text draw-text-ppl" ng-repeat="candidate in vm.candidates">
+          <div>{{candidate.sn}}</div>
+          <div>{{candidate.name}}</div>
+          <div>{{candidate.rtx}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
