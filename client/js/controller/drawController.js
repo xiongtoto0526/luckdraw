@@ -2,9 +2,14 @@
 
 // @ngInject
 import { Meteor } from 'meteor/meteor';
-import { Configs, defaultConfig } from '/imports/api/configs';
-import { Status, defaultStatus } from '/imports/api/status';
+
+import { Configs } from '/imports/api/configs';
+import { Status } from '/imports/api/status';
 import { Ppl } from '/imports/api/ppl';
+
+import { defaultConfig } from '/imports/api/configsDefaults';
+import { defaultStatus } from '/imports/api/statusDefaults';
+import { defaultPpl } from '/imports/api/pplDefaults';
 
 export default function($scope, $meteor, $reactive, $timeout, $interval) {
   'ngInject';
@@ -15,16 +20,16 @@ export default function($scope, $meteor, $reactive, $timeout, $interval) {
 
   vm.helpers({
     dbConfigs() {
-      return Configs.find({}, {sort: [["classSeq", "asc"],["roundSeq", "asc"]]}, {reactive: false});
+      return Configs.find({}, {sort: [['classSeq', 'asc'],['roundSeq', 'asc']]}, {reactive: false});
     },
     dbStatus() {
       return Status.find({}, {}, {reactive: false});
     },
     dbLocalCandidates() {
-      return Ppl.find({localAwardId: ""}, {}, {reactive: false});
+      return Ppl.find({localAwardId: '', scope: 'local'}, {}, {reactive: false});
     },
     dbGlobalCandidates() {
-      return Ppl.find({globalAwardId: ""}, {}, {reactive: false});
+      return Ppl.find({globalAwardId: ''}, {}, {reactive: false});
     }
   });
 

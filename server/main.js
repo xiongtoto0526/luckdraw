@@ -1,7 +1,11 @@
 import { Meteor } from 'meteor/meteor';
-import { Configs, defaultConfig } from '/imports/api/configs';
-import { Status, defaultStatus } from '/imports/api/status';
+import { Configs } from '/imports/api/configs';
+import { Status } from '/imports/api/status';
 import { Ppl } from '/imports/api/ppl';
+
+import { defaultConfig } from '/imports/api/configsDefaults';
+import { defaultStatus } from '/imports/api/statusDefaults';
+import { defaultPpl } from '/imports/api/pplDefaults';
 
 Meteor.startup(() => {
   if (Status.find().count() == 0) {
@@ -16,5 +20,9 @@ Meteor.startup(() => {
     });
   }
 
-  console.log(Ppl.find().count());
+  if (Ppl.find().count() === 0) { 
+    defaultPpl.forEach((ppl) => {
+      Ppl.insert(ppl);
+    });
+  }
 });

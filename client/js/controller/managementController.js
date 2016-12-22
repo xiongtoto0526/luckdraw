@@ -2,9 +2,14 @@
 
 // @ngInject
 import { Meteor } from 'meteor/meteor';
-import { Configs, defaultConfig } from '/imports/api/configs';
-import { Status, defaultStatus } from '/imports/api/status';
+
+import { Configs } from '/imports/api/configs';
+import { Status } from '/imports/api/status';
 import { Ppl } from '/imports/api/ppl';
+
+import { defaultConfig } from '/imports/api/configsDefaults';
+import { defaultStatus } from '/imports/api/statusDefaults';
+import { defaultPpl } from '/imports/api/pplDefaults';
 
 export default function($scope, $meteor, $reactive, $timeout) {
   'ngInject';
@@ -17,7 +22,7 @@ export default function($scope, $meteor, $reactive, $timeout) {
 
   vm.helpers({
     dbConfigs() {
-      return Configs.find({}, {sort: [["classSeq", "asc"],["roundSeq", "asc"]]}, {reactive: false});
+      return Configs.find({}, {sort: [['classSeq', 'asc'],['roundSeq', 'asc']]}, {reactive: false});
     },
     dbStatus() {
       return Status.find({}, {}, {reactive: false});
@@ -52,7 +57,10 @@ export default function($scope, $meteor, $reactive, $timeout) {
       Configs.insert(config);
     });
 
-    Meteor.call('resetPpl');
+    Meteor.call('removeAllPpl');
+    defaultPpl.forEach((ppl) => {
+      Ppl.insert(ppl);
+    });
   };
 
   vm.deleteConfig = function(config) {
